@@ -1,0 +1,13 @@
+runtime: python39  # Update the runtime to the Python version you're using
+entrypoint: gunicorn -b :$PORT main:app  # Specify the entrypoint for your application
+
+instance_class: F2
+
+automatic_scaling:
+  target_cpu_utilization: 0.65
+  min_instances: 1
+  max_instances: 15
+  min_pending_latency: automatic
+  max_pending_latency: 15s  # Update this value to be within the accepted range
+
+network: {}
